@@ -1,6 +1,11 @@
 import * as io from 'socket.io-client';
 import { EventEmitter } from 'events';
 
+type InvocationResult = {
+  invocationId: number;
+  result: any;
+};
+
 class Platform extends EventEmitter {
   socket: SocketIOClient.Socket;
   thingId: string;
@@ -18,6 +23,10 @@ class Platform extends EventEmitter {
 
   connect() {
     this.socket.connect();
+  }
+
+  emitMethodInvocationResult(result: InvocationResult) {
+    this.socket.emit('method-invocation-result', result);
   }
 
   private setupEventForwarding() {
