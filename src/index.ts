@@ -30,7 +30,7 @@ class Platform extends EventEmitter {
   }
 
   private setupEventForwarding() {
-    const events = ['connect', 'disconnect', 'event', 'connect_error', 'connect_timeout', 'methodCall'];
+    const events = ['connect', 'disconnect', 'event', 'connect_error', 'connect_timeout', 'method-invocation'];
 
     events.forEach(event => {
       this.socket.on(event, (...parameters: object[]) => this.emit(event, ...parameters));

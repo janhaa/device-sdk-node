@@ -7,6 +7,6 @@ const platform = new Platform(
 // tslint:disable-next-line:no-console
 platform.on('connect', () => console.log('connected'));
 // tslint:disable-next-line:no-console
-platform.on('methodCall', call => console.log(call));
+platform.on('method-invocation', call => console.log(call));
 
 platform.connect();
