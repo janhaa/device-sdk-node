@@ -17,7 +17,9 @@ class Platform extends EventEmitter {
 
     this.setupEventForwarding();
     this.socket.on('connect', () => {
-      this.socket.emit('auth', { id: this.thingId });
+      this.socket.emit('auth', { id: this.thingId }, (response: string) => {
+        if (response == 'ok') this.emit('authenticated');
+      });
     });
   }
 
