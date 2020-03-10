@@ -29,6 +29,10 @@ class Platform extends EventEmitter {
     this.socket.emit('method-invocation-result', result);
   }
 
+  setAttributeValue(attribute: string, value: any) {
+    this.socket.emit('set-attribute-value', { attribute, value });
+  }
+
   private setupEventForwarding() {
     const events = ['connect', 'disconnect', 'event', 'connect_error', 'connect_timeout', 'method-invocation'];
 
